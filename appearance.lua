@@ -15,7 +15,8 @@ function module.apply(config)
     -- config.color_scheme = 'iTerm2 Default'
     -- config.color_scheme = 'Dark Pastel'
     -- config.color_scheme = 'iTerm2 Smoooooth'
-    config.color_scheme = 'GitHub Dark Default'
+    -- config.color_scheme = 'GitHub Dark'
+    -- config.color_scheme = "3024 Night"
 
     -- 字体
     config.font = wezterm.font('ComicShannsMono Nerd Font', { weight = 'Regular', italic = false })
@@ -31,10 +32,11 @@ function module.apply(config)
     -- 背景图
     -- config.window_background_image = '/Users/hank/Pictures/idea/50da68258ia8310fcb6135bdfa49f283.jpeg'
     -- config.window_background_image = '/Users/hank/Pictures/idea/music-life-muzyka-zhizn.jpg'
-    config.window_background_image = '/Users/hank/Pictures/bg/正在睡觉的北极狐.jpg'
+    -- config.window_background_image = '/Users/hank/Pictures/bg/正在睡觉的北极狐.jpg'
+    config.window_background_image = '/Users/hank/Pictures/bg/xh.jpg'
     config.window_background_image_hsb = {
         -- 亮度乘数
-        brightness = 0.5,
+        brightness = 0.1,
         -- 色相
         hue = 1.0,
         -- 饱和度
@@ -43,7 +45,7 @@ function module.apply(config)
     -- 背景透明度
     config.window_background_opacity = 1.0
     -- 文本背景透明度
-    config.text_background_opacity = 0.6
+    config.text_background_opacity = 0.4
 end
 
 return module
