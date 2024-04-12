@@ -15,7 +15,7 @@ function module.apply(config)
     -- config.color_scheme = 'iTerm2 Default'
     -- config.color_scheme = 'Dark Pastel'
     -- config.color_scheme = 'iTerm2 Smoooooth'
-    -- config.color_scheme = 'GitHub Dark'
+    config.color_scheme = 'GitHub Dark'
     -- config.color_scheme = "3024 Night"
 
     -- 字体
