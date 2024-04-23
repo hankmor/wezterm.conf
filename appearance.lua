@@ -19,15 +19,15 @@ function module.apply(config)
     -- config.color_scheme = "3024 Night"
 
     -- 字体
-    config.font = wezterm.font('ComicShannsMono Nerd Font', { weight = 'Regular', italic = false })
+    -- config.font = wezterm.font('ComicShannsMono Nerd Font', { weight = 'Regular', italic = false })
     -- config.font = wezterm.font('Hack Nerd Font Mono', { weight = 'Regular', italic = false})
-    -- config.font = wezterm.font('JetBrainsMono Nerd Font', { weight = 'Regular', italic = false })
+    config.font = wezterm.font('JetBrainsMono Nerd Font', { weight = 'Regular', italic = false })
     -- config.font = wezterm.font_with_fallback {
     --     'ComicShannsMono Nerd Font',
     --     'JetBrainsMono Nerd Font',
     --     'Hack Nerd Font Mono',
     -- }
-    config.font_size = 14.0
+    config.font_size = 13.0
     config.line_height = 1.2
     -- 背景图
     -- config.window_background_image = '/Users/hank/Pictures/idea/50da68258ia8310fcb6135bdfa49f283.jpeg'
@@ -45,7 +45,7 @@ function module.apply(config)
     -- 背景透明度
     config.window_background_opacity = 1.0
     -- 文本背景透明度
-    config.text_background_opacity = 0.4
+    config.text_background_opacity = 0.8
 end
 
 return module
