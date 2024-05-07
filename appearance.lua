@@ -15,22 +15,22 @@ function module.apply(config)
   -- config.color_scheme = 'Green Screen (base16)'
   -- config.color_scheme = 'Silk Light (base16)'
   -- night
-  -- config.color_scheme = 'iTerm2 Default'
+  config.color_scheme = 'iTerm2 Default'
   -- config.color_scheme = 'Dark Pastel'
   -- config.color_scheme = 'iTerm2 Smoooooth'
-  config.color_scheme = 'GitHub Dark'
+  -- config.color_scheme = 'GitHub Dark'
   -- config.color_scheme = "3024 Night"
 
   -- 字体
   -- config.font = wezterm.font('ComicShannsMono Nerd Font', { weight = 'Regular', italic = false })
   -- config.font = wezterm.font('Hack Nerd Font Mono', { weight = 'Regular', italic = false})
   -- config.font = wezterm.font('JetBrainsMono Nerd Font', { weight = 'Regular', italic = false })
-  config.font = wezterm.font('Monaco', { weight = 'Regular', italic = false })
+  -- config.font = wezterm.font('Monaco', { weight = 'Regular', italic = false })
   config.font = wezterm.font_with_fallback {
-    'Monaco',
-    { family = 'Hei', weight = 'Regular', Stretch = 'Expanded', scale = 1.2 },
-    'ComicShannsMono Nerd Font',
+    -- 'Monaco',
     'JetBrainsMono Nerd Font',
+    { family = 'Hei', weight = 'Regular', stretch = 'Expanded', scale = 1.0 },
+    'ComicShannsMono Nerd Font',
   }
   config.font_size = 14.0
   config.line_height = 1.2
