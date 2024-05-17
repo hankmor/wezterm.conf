@@ -1,4 +1,3 @@
--- 外观配置
 local wezterm = require('wezterm')
 local M = {}
 
@@ -58,6 +57,12 @@ M.config = function(config)
     font = config.font,
     font_size = config.font_size,
   }
+
+  -- always maximize window when opening
+  wezterm.on("gui-startup", function()
+    local tab, pane, window = wezterm.mux.spawn_window {}
+    window:gui_window():maximize()
+  end)
 
   -- =========================================
   -- Tabbar 配置
