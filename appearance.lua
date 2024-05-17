@@ -1,13 +1,12 @@
 -- 外观配置
 local wezterm = require('wezterm')
-local module = {}
+local M = {}
 
--- 主入口方法，在 wezterm.lua 中调用
-function module.apply(config)
-  config.enable_tab_bar = true               -- 去掉tabbar
-  config.hide_tab_bar_if_only_one_tab = true -- 如果只有一个 tab 则隐藏tabbar
+M.config = function(config)
+  -- =========================================
+  -- 主题配置
+  -- =========================================
 
-  -- 主题
   -- light
   -- config.color_scheme = 'Yousai (terminal.sexy)'
   -- config.color_scheme = 'Github'
@@ -21,19 +20,10 @@ function module.apply(config)
   -- config.color_scheme = 'GitHub Dark'
   -- config.color_scheme = "3024 Night"
 
-  -- 字体
-  -- config.font = wezterm.font('ComicShannsMono Nerd Font', { weight = 'Regular', italic = false })
-  -- config.font = wezterm.font('Hack Nerd Font Mono', { weight = 'Regular', italic = false})
-  -- config.font = wezterm.font('JetBrainsMono Nerd Font', { weight = 'Regular', italic = false })
-  -- config.font = wezterm.font('Monaco', { weight = 'Regular', italic = false })
-  config.font = wezterm.font_with_fallback {
-    -- 'Monaco',
-    'JetBrainsMono Nerd Font',
-    { family = 'Hei', weight = 'Regular', stretch = 'Expanded', scale = 1.0 },
-    'ComicShannsMono Nerd Font',
-  }
-  config.font_size = 14.0
-  config.line_height = 1.2
+  -- =========================================
+  -- 窗口配置
+  -- =========================================
+
   -- 背景图
   -- config.window_background_image = '/Users/hank/Pictures/idea/50da68258ia8310fcb6135bdfa49f283.jpeg'
   -- config.window_background_image = '/Users/hank/Pictures/idea/music-life-muzyka-zhizn.jpg'
@@ -51,9 +41,50 @@ function module.apply(config)
   -- config.window_background_opacity = 1.0
   -- 文本背景透明度
   -- config.text_background_opacity = 0.8
+  -- config.window_background_opacity = 0.7
+  -- config.macos_window_background_blur = 49 -- 与 window_background_opacity 结合使用时，配置 macOS 在屏幕上合成窗口时使用的模糊半径量。
+  config.window_decorations = "RESIZE" -- 配置窗口是否有标题栏和/或可调整大小的边框
+  -- config.window_border_radius = 100
+
+  -- 窗口padding 设置为0
+  config.window_padding = {
+    left = 0,
+    right = 0,
+    top = 0,
+    bottom = 0,
+  }
+
+  config.window_frame = {
+    font = config.font,
+    font_size = config.font_size,
+  }
+
+  -- =========================================
+  -- Tabbar 配置
+  -- =========================================
+
+  -- config.tab_bar_at_bottom = true
+  config.enable_tab_bar = true               -- 去掉tabbar
+  config.hide_tab_bar_if_only_one_tab = true -- 如果只有一个 tab 则隐藏tabbar
+  config.use_fancy_tab_bar = true
+  config.tab_max_width = 26
+
+  -- =========================================
+  -- Performance
+  -- =========================================
+
+  config.max_fps = 24
+  config.animation_fps = 0
+  config.cursor_blink_ease_in = "Constant"
+  config.cursor_blink_ease_out = "Constant"
+
+  config.use_resize_increments = true
 end
 
--- Support zen mode
+-- =========================================
+-- Support neovim Zen mode
+-- =========================================
+
 wezterm.on('user-var-changed', function(window, pane, name, value)
   local overrides = window:get_config_overrides() or {}
   if name == "ZEN_MODE" then
@@ -77,4 +108,4 @@ wezterm.on('user-var-changed', function(window, pane, name, value)
   window:set_config_overrides(overrides)
 end)
 
-return module
+return M

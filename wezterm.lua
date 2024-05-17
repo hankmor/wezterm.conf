@@ -1,7 +1,5 @@
 -- Pull in the wezterm API
-local wezterm = require 'wezterm'
-local appearance = require('appearance')
-local keymap = require('keymap')
+local wezterm = require('wezterm')
 
 -- This table will hold the configuration.
 local config = {}
@@ -14,8 +12,9 @@ end
 
 -- This is where you actually apply your config choices
 
-appearance.apply(config)
-keymap.apply(config)
+require('font').config(config)
+require('appearance').config(config)
+require('keymap').config(config)
 
 -- and finally, return the configuration to wezterm
 return config
