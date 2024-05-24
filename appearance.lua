@@ -24,7 +24,6 @@ M.config = function(config)
   -- =========================================
 
   -- 背景图
-  -- config.window_background_image = '/Users/hank/Pictures/idea/50da68258ia8310fcb6135bdfa49f283.jpeg'
   -- config.window_background_image = '/Users/hank/Pictures/idea/music-life-muzyka-zhizn.jpg'
   -- config.window_background_image = '/Users/hank/Pictures/bg/正在睡觉的北极狐.jpg'
   -- config.window_background_image = '/Users/hank/Pictures/bg/xh.jpg'
@@ -37,13 +36,14 @@ M.config = function(config)
   --     saturation = 1.0,
   -- }
   -- 背景透明度
-  -- config.window_background_opacity = 1.0
+  -- config.window_background_opacity = 0.8
   -- 文本背景透明度
   -- config.text_background_opacity = 0.8
   -- config.window_background_opacity = 0.7
-  -- config.macos_window_background_blur = 49 -- 与 window_background_opacity 结合使用时，配置 macOS 在屏幕上合成窗口时使用的模糊半径量。
+  -- 与 window_background_opacity 结合使用时，配置 macOS 在屏幕上合成窗口时使用的模糊半径量。
+  -- config.macos_window_background_blur = 69
   config.window_decorations = "RESIZE" -- 配置窗口是否有标题栏和/或可调整大小的边框
-  -- config.window_border_radius = 100
+  config.enable_scroll_bar = false
 
   -- 窗口padding 设置为0
   config.window_padding = {
@@ -62,6 +62,10 @@ M.config = function(config)
   wezterm.on("gui-startup", function()
     local tab, pane, window = wezterm.mux.spawn_window {}
     window:gui_window():maximize()
+  end)
+
+  wezterm.on('window-config-reloaded', function(window, pane)
+    window:toast_notification('wezterm', 'configuration reloaded!', nil, 4000)
   end)
 
   -- =========================================
@@ -83,7 +87,7 @@ M.config = function(config)
   config.cursor_blink_ease_in = "Constant"
   config.cursor_blink_ease_out = "Constant"
 
-  config.use_resize_increments = true
+  config.use_resize_increments = false
 end
 
 -- =========================================
