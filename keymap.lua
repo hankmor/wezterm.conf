@@ -31,6 +31,11 @@ M.config = function(config)
         end
       end)
     },
+    -- goto up/down/left/right window
+    {key = 'j', mods = 'CTRL|SHIFT', action = act.ActivatePaneDirection 'Down'},
+    {key = 'k', mods = 'CTRL|SHIFT', action = act.ActivatePaneDirection 'Up'},
+    {key = 'h', mods = 'CTRL|SHIFT', action = act.ActivatePaneDirection 'Left'},
+    {key = 'l', mods = 'CTRL|SHIFT', action = act.ActivatePaneDirection 'Right'},
   }
 end
 

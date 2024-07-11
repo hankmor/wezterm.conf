@@ -13,10 +13,10 @@ M.config = function(config)
   -- config.color_scheme = 'Green Screen (base16)'
   -- config.color_scheme = 'Silk Light (base16)'
   -- night
-  config.color_scheme = 'iTerm2 Default'
+  -- config.color_scheme = 'iTerm2 Default'
   -- config.color_scheme = 'Dark Pastel'
   -- config.color_scheme = 'iTerm2 Smoooooth'
-  -- config.color_scheme = 'GitHub Dark'
+  config.color_scheme = 'GitHub Dark'
   -- config.color_scheme = "3024 Night"
 
   -- =========================================
