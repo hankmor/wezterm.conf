@@ -16,9 +16,9 @@ M.config = function(config)
 	-- config.color_scheme = 'iTerm2 Default'
 	-- config.color_scheme = 'Dark Pastel'
 	-- config.color_scheme = 'tokyonight'
-	config.color_scheme = "tokyonight"
+	-- config.color_scheme = "tokyonight"
 	-- config.color_scheme = "tokyonight_storm"
-	-- config.color_scheme = "tokyonight_moon"
+	config.color_scheme = "tokyonight_moon"
 	-- config.color_scheme = "tokyonight_night"
 
 	-- config.color_scheme = "GitHub Dark"
@@ -28,21 +28,21 @@ M.config = function(config)
 	-- =========================================
 
 	-- 背景图
-	config.window_background_image = "/Users/hank/Pictures/bg/zf.png"
+	-- config.window_background_image = "/Users/hank/Pictures/bg/zf.png"
 	-- config.window_background_image = "/Users/hank/Pictures/bg/girl.jpg"
 	-- config.window_background_image = "/Users/hank/Pictures/bg/mac.jpg"
-	config.window_background_image_hsb = {
-		-- 亮度乘数
-		brightness = 0.03,
-		-- 色相
-		hue = 1,
-		-- 饱和度
-		saturation = 1,
-	}
-	-- 背景透明度
-	config.window_background_opacity = 1
-	-- 文本背景透明度
-	config.text_background_opacity = 1
+	-- config.window_background_image_hsb = {
+	-- 	-- 亮度乘数
+	-- 	brightness = 0.01,
+	-- 	-- 色相
+	-- 	hue = 1,
+	-- 	-- 饱和度
+	-- 	saturation = 1,
+	-- }
+	-- -- 背景透明度
+	-- config.window_background_opacity = 1
+	-- -- 文本背景透明度
+	-- config.text_background_opacity = 1
 	-- 与 window_background_opacity 结合使用时，配置 macOS 在屏幕上合成窗口时使用的模糊半径量。
 	-- config.macos_window_background_blur = 10
 	config.window_decorations = "RESIZE" -- 配置窗口是否有标题栏和/或可调整大小的边框
@@ -77,7 +77,7 @@ M.config = function(config)
 
 	-- config.tab_bar_at_bottom = true
 	config.enable_tab_bar = false -- 去掉tabbar
-	config.hide_tab_bar_if_only_one_tab = false -- 如果只有一个 tab 则隐藏tabbar
+	config.hide_tab_bar_if_only_one_tab = true -- 如果只有一个 tab 则隐藏tabbar
 	config.use_fancy_tab_bar = false
 	config.tab_max_width = 26
 
