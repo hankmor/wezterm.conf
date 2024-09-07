@@ -1,4 +1,5 @@
 local wezterm = require("wezterm")
+local wallpaper = require("utils/wallpaper")
 local M = {}
 
 M.config = function(config)
@@ -6,53 +7,40 @@ M.config = function(config)
 	-- 主题配置
 	-- =========================================
 
-	-- light
-	-- config.color_scheme = 'Yousai (terminal.sexy)'
-	-- config.color_scheme = 'Github'
-	-- config.color_scheme = 'farmhouse-light'
-	-- config.color_scheme = 'Green Screen (base16)'
-	-- config.color_scheme = 'Silk Light (base16)'
-	-- night
-	-- config.color_scheme = 'iTerm2 Default'
-	-- config.color_scheme = 'Dark Pastel'
-	-- config.color_scheme = 'tokyonight'
-	-- config.color_scheme = "tokyonight"
-	-- config.color_scheme = "tokyonight_storm"
 	config.color_scheme = "tokyonight_moon"
 	-- config.color_scheme = "tokyonight_night"
-
-	-- config.color_scheme = "GitHub Dark"
 
 	-- =========================================
 	-- 窗口配置
 	-- =========================================
 
+	config.macos_window_background_blur = 10
+	config.native_macos_fullscreen_mode = false
+	config.adjust_window_size_when_changing_font_size = false
+	config.debug_key_events = false
+	config.window_decorations = "RESIZE"
+
 	-- 背景图
-	-- config.window_background_image = "/Users/hank/Pictures/bg/zf.png"
-	-- config.window_background_image = "/Users/hank/Pictures/bg/girl.jpg"
-	-- config.window_background_image = "/Users/hank/Pictures/bg/mac.jpg"
-	-- config.window_background_image_hsb = {
-	-- 	-- 亮度乘数
-	-- 	brightness = 0.01,
-	-- 	-- 色相
-	-- 	hue = 1,
-	-- 	-- 饱和度
-	-- 	saturation = 1,
-	-- }
-	-- -- 背景透明度
-	-- config.window_background_opacity = 1
-	-- -- 文本背景透明度
-	-- config.text_background_opacity = 1
-	-- 与 window_background_opacity 结合使用时，配置 macOS 在屏幕上合成窗口时使用的模糊半径量。
-	-- config.macos_window_background_blur = 10
 	config.window_decorations = "RESIZE" -- 配置窗口是否有标题栏和/或可调整大小的边框
 	config.enable_scroll_bar = false
 
+	config.background = {
+		wallpaper.random_wallpaper(os.getenv("HOME") .. "/.config/wezterm/wallpapers/"),
+		{
+			source = {
+				Color = "#000000",
+			},
+			width = "100%",
+			height = "100%",
+			opacity = 0.8,
+		},
+	}
+
 	-- 窗口padding 设置为0
 	config.window_padding = {
-		left = 0,
-		right = 0,
-		top = 0,
+		left = 10,
+		right = 10,
+		top = 10,
 		bottom = 0,
 	}
 
@@ -63,8 +51,8 @@ M.config = function(config)
 
 	-- always maximize window when opening
 	wezterm.on("gui-startup", function()
-		local tab, pane, window = wezterm.mux.spawn_window({})
-		window:gui_window():maximize()
+		-- local tab, pane, window = wezterm.mux.spawn_window({})
+		-- window:gui_window():maximize()
 	end)
 
 	wezterm.on("window-config-reloaded", function(window, pane)
@@ -78,7 +66,7 @@ M.config = function(config)
 	-- config.tab_bar_at_bottom = true
 	config.enable_tab_bar = false -- 去掉tabbar
 	config.hide_tab_bar_if_only_one_tab = true -- 如果只有一个 tab 则隐藏tabbar
-	config.use_fancy_tab_bar = false
+	config.use_fancy_tab_bar = true
 	config.tab_max_width = 26
 
 	-- =========================================
@@ -99,6 +87,25 @@ end
 
 wezterm.on("user-var-changed", function(window, pane, name, value)
 	local overrides = window:get_config_overrides() or {}
+
+	if name == "T_SESSION" then
+		local session = value
+		wezterm.log_info("is session", session)
+		overrides.background = {
+			w.set_tmux_session_wallpaper(value),
+			{
+				source = {
+					Gradient = {
+						colors = { "#000000" },
+					},
+				},
+				width = "100%",
+				height = "100%",
+				opacity = 0.95,
+			},
+		}
+	end
+
 	if name == "ZEN_MODE" then
 		-- zenmod will use wezterm plugin to increase font size when start zenmod
 		local incremental = value:find("+")
