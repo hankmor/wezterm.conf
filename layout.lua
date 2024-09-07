@@ -10,11 +10,19 @@ wezterm.on("gui-startup", function(cmd)
 	local args = {}
 	local paneCnt = 1
 	if cmd then
-		project_dir = cmd.args[1]
-		if cmd.args[2] then
-			paneCnt = tonumber(cmd.args[2])
+		if #cmd.args >= 1 then
+			if cmd.args[1]:match("%d") then
+				paneCnt = math.floor(tonumber(cmd.args[1]))
+			else
+				project_dir = cmd.args[1]
+			end
+		end
+		if #cmd.args == 2 then
+			paneCnt = math.floor(tonumber(cmd.args[2]))
 		end
 	end
+
+	print(project_dir, paneCnt)
 
 	-- Set a workspace for coding on a current project
 	local tab, pane, window = mux.spawn_window({
@@ -27,7 +35,7 @@ wezterm.on("gui-startup", function(cmd)
 
 	if paneCnt > 1 then
 		if paneCnt > 3 then
-			local col = paneCnt // 2
+			local col = math.floor(paneCnt / 2)
 			if paneCnt % 2 > 0 then
 				col = col + 1
 			end
