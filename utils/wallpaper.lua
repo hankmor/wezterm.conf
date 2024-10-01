@@ -18,7 +18,7 @@ M.random_wallpaper = function(dir)
 		horizontal_align = "Center",
 		repeat_x = "Repeat",
 		repeat_y = "Repeat",
-		opacity = 1,
+		opacity = 1.0,
 		-- speed = 200,
 	}
 end

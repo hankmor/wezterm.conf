@@ -13,7 +13,7 @@ M.config = function(config)
 	config.font = wezterm.font_with_fallback({
 		{
 			family = "JetBrainsMono Nerd Font",
-			weight = 550,
+			weight = 620,
 			italic = false,
 			stretch = "Expanded",
 			scale = 1.0,

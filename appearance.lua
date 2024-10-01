@@ -18,17 +18,20 @@ M.config = function(config)
 	config.native_macos_fullscreen_mode = false
 	config.adjust_window_size_when_changing_font_size = false
 	config.debug_key_events = false
-	config.window_decorations = "RESIZE"
-
-	-- 背景图
 	config.window_decorations = "RESIZE" -- 配置窗口是否有标题栏和/或可调整大小的边框
 	config.enable_scroll_bar = false
+	config.tab_bar_at_bottom = false
+	config.enable_tab_bar = false -- 去掉tabbar
+	config.hide_tab_bar_if_only_one_tab = true -- 如果只有一个 tab 则隐藏tabbar
+	config.use_fancy_tab_bar = false
+	config.tab_max_width = 26
 
 	config.background = {
 		wallpaper.random_wallpaper(os.getenv("HOME") .. "/.config/wezterm/wallpapers/"),
 		{
 			source = {
-				Color = "#000000",
+				-- Color = "#222436",
+                Color = "#000000",
 			},
 			width = "100%",
 			height = "100%",
@@ -36,7 +39,7 @@ M.config = function(config)
 		},
 	}
 
-	-- 窗口padding 设置为0
+	-- 窗口padding
 	config.window_padding = {
 		left = 10,
 		right = 10,
@@ -58,16 +61,6 @@ M.config = function(config)
 	wezterm.on("window-config-reloaded", function(window, pane)
 		window:toast_notification("wezterm", "configuration reloaded!", nil, 4000)
 	end)
-
-	-- =========================================
-	-- Tabbar 配置
-	-- =========================================
-
-	-- config.tab_bar_at_bottom = true
-	config.enable_tab_bar = false -- 去掉tabbar
-	config.hide_tab_bar_if_only_one_tab = true -- 如果只有一个 tab 则隐藏tabbar
-	config.use_fancy_tab_bar = true
-	config.tab_max_width = 26
 
 	-- =========================================
 	-- Performance
